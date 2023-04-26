@@ -1,7 +1,8 @@
 package org.example;
 
 import lombok.extern.slf4j.Slf4j;
-import org.example.exception.FileExtensionNotSupportedException;
+import org.example.exception.InvalidArgumentException;
+import org.example.exception.InvalidFileFormatException;
 import org.example.util.CsvHelper;
 import org.example.model.CsvEntry;
 import org.example.model.ShopIdMinimalPricePair;
@@ -16,16 +17,24 @@ import java.util.HashMap;
 @Slf4j
 public class Main {
     public static void main(String[] args) {
+        if (args.length == 3) {
             try {
                 Main.processCsv(args[0], args[1], args[2]);
-            } catch (FileExtensionNotSupportedException fe) {
+            } catch (InvalidArgumentException fe) {
                 log.error(fe.getMessage());
             }
+        } else {
+            log.error("Argument length should be equal to 3 only.. exiting");
+        }
     }
 
-    private static void processCsv(String fileName, String productLabel1, String productLabel2) throws FileExtensionNotSupportedException {
+    private static void processCsv(String fileName, String productLabel1, String productLabel2) throws InvalidArgumentException {
         if (!fileName.endsWith(".csv")) {
-            throw new FileExtensionNotSupportedException("File extension not supported as of now : " + fileName);
+            throw new InvalidArgumentException("Invalid File extension : " + fileName);
+        }
+
+        if (!productLabel1.matches("^[a-z]+(_[a-z]+)*$") || !productLabel2.matches("^[a-z]+(_[a-z]+)*$")) {
+            throw new InvalidArgumentException("Invalid product label; All products should be lower case letters and underscores only");
         }
 
         HashMap<String, CsvEntry> csvMap =

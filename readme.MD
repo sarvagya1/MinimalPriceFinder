@@ -12,7 +12,7 @@
 - All user needed products might not present in any single shop.
 
 **Assumption**
-- Program currently support 2 product labels passed by user.
+- Program currently support 3 arguments i.e, 1 file name and 2 product labels.
 - First line of csv file is header.
 
 
