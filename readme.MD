@@ -18,13 +18,13 @@
 
 Sample 1
 ----------------------------
-Data File data.csv
-1, 4.00, teddy_bear
-2, 5.00, teddy_bear
-2, 6.50, baby_powder
-3, 5.00, teddy_bear
-3, 5.50, baby_powder
-4, 7.50, teddy_bear, baby_powder
+Data File data.csv <br />
+1, 4.00, teddy_bear <br />
+2, 5.00, teddy_bear <br />
+2, 6.50, baby_powder <br />
+3, 5.00, teddy_bear <br />
+3, 5.50, baby_powder <br />
+4, 7.50, teddy_bear, baby_powder <br />
 
 Program Input
 > program data.csv teddy_bear baby_powder
@@ -35,11 +35,11 @@ Output
 
 Sample 2
 ----------------------------
-Data File data.csv
-3, 4.00, pampers_diapers
-3, 8.00, johnson_wipes
-4, 5.00, johnson_wipes
-4, 2.50, cotton_buds
+Data File data.csv <br />
+3, 4.00, pampers_diapers <br />
+3, 8.00, johnson_wipes <br />
+4, 5.00, johnson_wipes <br />
+4, 2.50, cotton_buds <br />
 
 Program Input
 > program data.csv pampers_diapers baby_soap
@@ -50,11 +50,11 @@ Output
 
 Sample 3
 ----------------------------
-Data File data.csv
-5, 4.00, bath_towel
-6, 5.00, scissor
-6, 6.00, bath_towel, cotton_balls, powder_puff
-5, 8.00, scissor
+Data File data.csv <br />
+5, 4.00, bath_towel <br />
+6, 5.00, scissor <br />
+6, 6.00, bath_towel, cotton_balls, powder_puff <br />
+5, 8.00, scissor <br />
 
 Program Input
 > program data.csv scissor bath_towel
@@ -65,11 +65,11 @@ Output
 
 Sample 4
 ----------------------------
-Data File data.csv
-1, 4.00, teddy_bear
-s1, 8.00, baby_powder
-2, 5.00, teddy_bear
-2, 6.50, baby_powder
+Data File data.csv <br />
+1, 4.00, teddy_bear <br />
+s1, 8.00, baby_powder <br />
+2, 5.00, teddy_bear <br />
+2, 6.50, baby_powder <br />
 
 Program Input
 > program data.csv teddy_bear baby_powder
