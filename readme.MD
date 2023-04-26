@@ -1,12 +1,79 @@
-### Minimal Price finder
+## Minimal Price Finder
 
-            //HashMap<String, CsvEntry> csvMap = CsvHelper.generateCsvMap("SampleData2.csv", "scissor", "bath_towel");
-            //HashMap<String, CsvEntry> csvMap = CsvHelper.generateCsvMap("SampleData3.csv", "scissor", "bath_towel");
-            //HashMap<String, CsvEntry> csvMap = CsvHelper.generateCsvMap("SampleData4.csv", "teddy_bear", "baby_powder");
-            //HashMap<String, CsvEntry> csvMap = CsvHelper.generateCsvMap("SampleData5.csv", "pampers_diapers", "baby_soap");
-            //HashMap<String, CsvEntry> csvMap = CsvHelper.generateCsvMap("SampleData6.csv", "teddy_bear", "baby_powder");
-            
-            //ShopIdMinimalPricePair<String, Float> kv_minimal = MinimalPriceFetcher.fetchResult(csvMap, "scissor", "bath_towel");
-            //ShopIdMinimalPricePair<String, Float> kv_minimal = MinimalPriceFetcher.fetchResult(csvMap, "pampers_diapers", "baby_soap");
-                
-            // add readme and JUNIT and data files
+**Description** : Java program to fetch minimal price of baby products user want to purchase corresponding to ShopId.
+
+**File Validation Added**
+- Only csv file supported as of now.
+- Shop IDs are integers, all products are lower case letters and underscores, and the price is a decimal number.
+- Shop id might not present in file in sorted ascending order.
+
+**Product Validation Added**
+- User needed product might not be present with any of the shop.
+- All user needed products might not present in any single shop.
+
+**Assumption**
+- Program currently support 2 product labels passed by user.
+- First line of csv file is header.
+
+
+Sample 1
+----------------------------
+Data File data.csv
+1, 4.00, teddy_bear
+2, 5.00, teddy_bear
+2, 6.50, baby_powder
+3, 5.00, teddy_bear
+3, 5.50, baby_powder
+4, 7.50, teddy_bear, baby_powder
+
+Program Input
+> program data.csv teddy_bear baby_powder
+
+Output
+> 4, 7.50
+---------------------------
+
+Sample 2
+----------------------------
+Data File data.csv
+3, 4.00, pampers_diapers
+3, 8.00, johnson_wipes
+4, 5.00, johnson_wipes
+4, 2.50, cotton_buds
+
+Program Input
+> program data.csv pampers_diapers baby_soap
+
+Output
+> none
+---------------------------
+
+Sample 3
+----------------------------
+Data File data.csv
+5, 4.00, bath_towel
+6, 5.00, scissor
+6, 6.00, bath_towel, cotton_balls, powder_puff
+5, 8.00, scissor
+
+Program Input
+> program data.csv scissor bath_towel
+
+Output
+> 6, 11.0
+---------------------------
+
+Sample 4
+----------------------------
+Data File data.csv
+1, 4.00, teddy_bear
+s1, 8.00, baby_powder
+2, 5.00, teddy_bear
+2, 6.50, baby_powder
+
+Program Input
+> program data.csv teddy_bear baby_powder
+
+Output
+> ERROR Invalid csv file format : ShopId is not integer : s1
+---------------------------

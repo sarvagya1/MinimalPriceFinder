@@ -1,6 +1,7 @@
 package org.example;
 
 import lombok.extern.slf4j.Slf4j;
+import org.example.exception.FileExtensionNotSupportedException;
 import org.example.util.CsvHelper;
 import org.example.model.CsvEntry;
 import org.example.model.ShopIdMinimalPricePair;
@@ -15,12 +16,17 @@ import java.util.HashMap;
 @Slf4j
 public class Main {
     public static void main(String[] args) {
-            log.debug("Start processing file to get shop id and minimal price for product needed by user");
-            Main.processCsv(args[0], args[1], args[2]);
-            log.debug("Done processing file");
+            try {
+                Main.processCsv(args[0], args[1], args[2]);
+            } catch (FileExtensionNotSupportedException fe) {
+                log.error(fe.getMessage());
+            }
     }
 
-    private static void processCsv(String fileName, String productLabel1, String productLabel2) {
+    private static void processCsv(String fileName, String productLabel1, String productLabel2) throws FileExtensionNotSupportedException {
+        if (!fileName.endsWith(".csv")) {
+            throw new FileExtensionNotSupportedException("File extension not supported as of now : " + fileName);
+        }
 
         HashMap<String, CsvEntry> csvMap =
                 CsvHelper.generateCsvMap(fileName, productLabel1, productLabel2);
@@ -28,7 +34,7 @@ public class Main {
         if (csvMap == null) {
             log.warn("Error while processing csv file... exiting");
         } else if (csvMap.isEmpty()) {
-            log.warn("Could not find minimal price since csvMap is empty... exiting");
+            log.warn("User needed product not match with product label available in file");
         } else {
             ShopIdMinimalPricePair<String, Float> kv_minimal =
                     MinimalPriceFetcher.fetchResult(csvMap, productLabel1, productLabel2);

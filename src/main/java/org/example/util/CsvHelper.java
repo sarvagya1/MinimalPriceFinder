@@ -89,7 +89,7 @@ public class CsvHelper {
             }
         }
         catch (InvalidFileFormatException ie) {
-            log.error("Invalid csv file format : {}", ie.getMessage());
+            log.error(ie.getMessage());
             return null;
         } catch (Exception e) {
             log.error("Exception while processing csv file : {}", e.getMessage());
