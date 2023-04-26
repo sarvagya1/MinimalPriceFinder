@@ -38,7 +38,6 @@ public class MinimalPriceFinderMain {
 
         HashMap<String, CsvEntry> csvMap =
                 CsvHelper.generateCsvMap(fileName, productLabel1, productLabel2);
-        log.info("csvMap : {}", csvMap);
         if (csvMap == null) {
             log.warn("Error while processing csv file... exiting");
         } else if (csvMap.isEmpty()) {
